@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=Encode+Sans+Expanded|Roboto+Condensed" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Berkshire+Swash|Istok+Web" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+          integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-info">
+  <a class="navbar-brand" style="font-family: 'Orbitron', sans-serif;" href="{% url 'feedHome' %}">Code Bug</a>
+    <img src="https://cdn3.iconfinder.com/data/icons/medical-7-1/512/tick_check_ok_yes_accept_mark-512.png" height="30px">
+    <div style="margin-top:-2px;font-family: 'Roboto Condensed', sans-serif; margin-left:20%;position:static">&nbsp;
+             <a href="{% url 'feedHome' %}" style="color: white"><b>News Feed</b></a>
+        <img src="https://cdn2.iconfinder.com/data/icons/social-productivity-line-art-2/128/news-512.png" height="20px">
+    </div>
+
+    <div  style="font-family: 'Roboto Condensed', sans-serif;margin-left: 4%;position: static">
+    <b>Logged in as </b>{{ user.username }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </div>
+
+<div style="margin-top:-2px;font-family: 'Roboto Condensed', sans-serif;position: static">
+    <a  href="{% url 'createAcc'  %}" style="color: white;" >My Profile</a>&nbsp;
+        <img src="http://gamebattles.majorleaguegaming.com/images/homepage/2.0/profile.png" height="20px">
+</div>
+
+<div style="margin-top:-2px;font-family: 'Roboto Condensed', sans-serif;position: static;margin-left: 20%">
+    <a  href="{% url 'logout'  %}" style="color: white;" >Logout</a>&nbsp;
+</div>
+</nav>
+
+<div style="margin-top: 5%">
+    	<h2 align="center">Search Queries</h2>
+           <div id="custom-search-input" align="center">
+                            <div class="input-group col-md-8">
+                                <input type="text" class="  search-query form-control" placeholder="What are you looking for ? " />
+                                <span class="input-group-btn">
+                                    <button class="btn btn-danger " type="button">
+                                        <span class="fa fa-search"></span>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+
+    <div style="margin-top: 2%" align="center">
+         <h6>Or</h6>
+          <a href="{% url 'create' %}" class="btn btn-default" type="button" style="color: white;background-color: black" >
+            Ask a new query&nbsp;&nbsp;<span class="fa fa-arrow-right"></span>
+          </a>
+    </div>
+
+
+</div>
+<div >
+    {{ msg }}
+
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ instance.title }}</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<style type="text/css">
+    a{
+        color: #cc1111;
+    }
+    body{
+
+    max-width: 100%;
+    overflow-x: hidden;
+    }
+</style>
+</head>
+<body style="background-size: cover" >
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.11';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+
+<div align="center"><h2>{{ instance.title }}</h2></div><hr>
+
+<div align="center">
+    <img src="{{ instance.file.url }}" class="img-responsive">
+</div>
+
+<div class="p-5 mb-2 btn-default marked-content " style="margin-right: 5%;margin-left: 5%;margin-top: 3%"   >
+    {{ instance.content }}
+
+</div>
+<br>
+
+
+
+<p class="lead" align="center">Comments:</p>
+{% for x in comments %}
+<div align="center" style="margin-left: 3%;margin-right: 3%">
+{{ x.content}}<br>
+    <div align="right" style="margin-right: 3%">
+      <small> via {{ x.user }} | {{ x.timestamp|timesince }} ago</small>
+    </div>
+
+</div>
+    <hr>
+{% endfor %}
+ <a class="btn btn-info btn-sm" href="{% url 'feedHome' %} " style="margin-left: 47.5%;margin-top: 3%;margin-bottom: 3%">Go Home</a>
+
+
+
+
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.6/marked.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.6/marked.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $(".marked-content").each(function () {
+            var myContent=$(this).text();
+            var markedContent=marked(myContent);
+            $(this).html(markedContent);
+            }).find("img").each(function () {
+                               $(this).addClass("img-responsive");
+
+        })
+
+
+    })
+
+</script>
+</body>
+</html>
